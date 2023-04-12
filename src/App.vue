@@ -18,10 +18,33 @@ export default {
       store,
     }
   },
+  mounted() {
+    let urlApi = 'https://api.themoviedb.org/3/movie/550?api_key=5e0f419894e6d88c4012aef540b7852b';
+    //urlApi += store.input.replace(" ", "+")
+
+    axios.get(urlApi).then(response => {
+      this.store.filmListApi = response.data.results;
+    });
+
+    if (this.store.filmListApi.length == 0) {
+      this.store.risultatoFilm = true
+    }
+
+    let urlApiTv = 'https://api.themoviedb.org/3/search/tv?api_key=5e0f419894e6d88c4012aef540b7852b&language=it_IT&query='
+    urlApiTv += store.input.replace(" ", "+")
+
+    axios.get(urlApiTv).then(response => {
+      this.store.tvListApi = response.data.results;
+    });
+
+    if (this.store.tvListApi.length == 0) {
+      this.store.risultatoTv = true
+    }
+  },
   methods: {
     getFilm() {
 
-      let urlApi = 'https://api.themoviedb.org/3/search/movie?api_key=2d6841a37fd674dfe6e37d212e5b383a&language=it-IT&query=';
+      let urlApi = 'https://api.themoviedb.org/3/search/movie?api_key=5e0f419894e6d88c4012aef540b7852b&language=it-IT&query=';
       urlApi += store.input.replace(" ", "+")
 
       axios.get(urlApi).then(response => {
@@ -32,7 +55,7 @@ export default {
         this.store.risultatoFilm = true
       }
 
-      let urlApiTv = 'https://api.themoviedb.org/3/search/tv?api_key=2d6841a37fd674dfe6e37d212e5b383a&language=it_IT&query='
+      let urlApiTv = 'https://api.themoviedb.org/3/search/tv?api_key=5e0f419894e6d88c4012aef540b7852b&language=it_IT&query='
       urlApiTv += store.input.replace(" ", "+")
 
       axios.get(urlApiTv).then(response => {

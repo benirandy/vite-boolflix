@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
 import { store } from '../store.js';
 import CardMovies from "./CardMovies.vue"
 import CardTv from "./CardTv.vue"

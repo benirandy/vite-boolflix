@@ -52,7 +52,7 @@ export default {
          converti["EL"] = "GR";
          converti["HE"] = "IL";
          lingua = converti[lingua] == undefined ? lingua : converti[lingua];
-         return `https://flagsapi.com/${lingua}/flat/48.png`
+         return `https://www.countryflagicons.com/FLAT/64/${lingua}.png`
       },
       votoStelle(voto) {
          return Math.round(voto * 10);
